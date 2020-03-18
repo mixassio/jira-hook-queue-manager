@@ -14,11 +14,11 @@ const isIgnore = require('./is-ignore');
 module.exports = async (body, _usersToIgnore = usersToIgnore, _testMode = testMode) => {
   try {
     console.log('hello');
-    // const ignoredUsers = [..._usersToIgnore, ...testMode.users];
-    // const mode = _testMode.on;
-    // if (await isIgnore(body, ignoredUsers, mode)) {
-    //   return;
-    // }
+    const ignoredUsers = [..._usersToIgnore, ...testMode.users];
+    const mode = _testMode.on;
+    if (await isIgnore(body, ignoredUsers, mode)) {
+      return;
+    }
     console.log('hello');
 
     const parsedBody = getFuncAndBody(body);
