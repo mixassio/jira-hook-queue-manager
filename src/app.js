@@ -17,10 +17,7 @@ module.exports = () => {
       logger.silly('Jira body', req.body);
 
       const saveStatus = await getParsedAndSaveToRedis(req.body);
-
-      if (saveStatus) {
-        await handleFunc();
-      }
+      console.log('saveStatus', saveStatus);
 
       next();
     })

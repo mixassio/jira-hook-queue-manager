@@ -18,14 +18,16 @@ services:
       - 54100:54100
     networks:
       - mynetwork
-  # arena:
-  #   image: weijing329/bee-queue-arena:v2.5.0
-  #   depends_on:
-  #     - redis
-  #   ports:
-  #     - "4567:4567"
-  #   volumes:
-  #     - ./set.json:/opt/arena/src/server/config/index.json
+  arena:
+    image: weijing329/bee-queue-arena:v2.5.0
+    depends_on:
+      - redis_db
+    ports:
+      - "4567:4567"
+    networks:
+      - mynetwork
+    volumes:
+      - ./set.json:/opt/arena/src/server/config/index.json
   redis_db:
     image: redis:4.0.11-alpine
     container_name: redis_db

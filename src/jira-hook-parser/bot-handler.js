@@ -12,13 +12,13 @@ const isCreateRoom = body => features.createRoom && utils.getKey(body) && utils.
 const isMemberInvite = body => features.inviteNewMembers && utils.isCorrectWebhook(body, 'jira:issue_updated');
 
 const isPostEpicUpdates = body =>
-  features.epicUpdates.on() &&
+  features.epicUpdates &&
   (utils.isCorrectWebhook(body, 'jira:issue_updated') ||
     (utils.isCorrectWebhook(body, 'jira:issue_created') && utils.getChangelog(body))) &&
   utils.getEpicKey(body);
 
 const isPostProjectUpdates = body =>
-  features.epicUpdates.on() &&
+  features.epicUpdates &&
   (utils.isCorrectWebhook(body, 'jira:issue_updated') || utils.isCorrectWebhook(body, 'jira:issue_created')) &&
   utils.isEpic(body) &&
   (utils.getTypeEvent(body) === 'issue_generic' || utils.getTypeEvent(body) === 'issue_created');
