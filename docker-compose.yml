@@ -5,11 +5,15 @@ services:
     image: node:13.5.0
     working_dir: /usr/src/app
     container_name: hook_parser
+    environment:
+      - REDIS_URL=redis://redis_db:6379/0
     command: sh -c "npm run start-dev"
     volumes:
       - '~/.bash_history:/.bash_history'
       - './:/usr/src/app:delegated'
       - '/tmp:/tmp:delegated'
+    depends_on:
+      - redis_db
     ports:
       - 3001:3001
     networks:
@@ -22,18 +26,18 @@ services:
   #     - "4567:4567"
   #   volumes:
   #     - ./set.json:/opt/arena/src/server/config/index.json
-  # redis:
-  #   image: redis:4.0.11-alpine
-  #   read_only: true
-  #   # ports:
-  #   #   - "6380:6380"
-  #   volumes:
-  #     - redis:/data
-  #   user: redis
+  redis_db:
+    image: redis:4.0.11-alpine
+    read_only: true
+    container_name: redis_db
+    # ports:
+    #   - "6379:6379"
+    volumes:
+      - redis:/data
+    user: redis
 
-# volumes:
-#   mysqlvolume:
-#   mongodata:
+volumes:
+  redis:
 
 networks:
   mynetwork:

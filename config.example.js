@@ -5,12 +5,10 @@ module.exports = Object.freeze({
     lang: 'en',
     // jira params
     jira: {
-        // url of your jira
-        url: 'https://jira.example.org',
-        // jira user name
-        user: 'bot',
-        // user password
-        password: 'key',
+        url: 'https://bingoboom.atlassian.net',
+        // url: 'https://jira.bingo-boom.ru/jira',
+        user: 'jira_bot_cloud@bingo-boom.com',
+        password: 'wgQklnSIkAOOe2PufsiNEC22',
     },
     // list of available actions for current user
     features: {
@@ -44,44 +42,53 @@ module.exports = Object.freeze({
     inviteIgnoreUsers: [],
     testMode: {
         on: true,
-        users: ['ivan', 'masha'],
+        users: ['jira_test', 'jira_test_bot'],
     },
     // redis params
+    // redis: {
+    //     host: 'jira_bot_redis',
+    //     port: 6379,
+    //     prefix: 'jira-hooks:',
+    // },
     redis: {
-        host: '127.0.0.1',
+        host: 'redis',
         port: 6379,
         prefix: 'jira-hooks:',
     },
     // Matrix params
     messenger: {
         // users with admin status
-        admins: ['admin'],
+        admins: ['gv_grudinin'],
         // messenger name
         name: 'matrix',
         // messenger domain
-        domain: 'matrix.example.org',
+        domain: 'matrix.bingo-boom.ru',
         // short name, before colomn, without @
-        user: 'bot',
-        // password
-        password: 'key',
-        bots: [
-            {
-                user: 'bot2',
-                password: 'key',
-            },
-            {
-                user: 'bot3',
-                password: 'key',
-            },
-        ],
+        // user: 'health_check_bot',
+        // password: 'i2CRrNSaHUYH5lQyh1Hg',
+        // user: 'jira_test_bot',
+        // password: 'xL1BI3ChW2db7N',
+
+        // bots: [
+        //     {
+        //         user: 'jira_bot_keeper',
+        //         password: 'EhSTk27CmfcHsYES9C4V',
+        //         //         user: 'bot2',
+        //         //         password: 'key',
+        //     },
+        //     //     {
+        //     //         user: 'bot3',
+        //     //         password: 'key',
+        //     //     },
+        // ],
         // info room
         // optional
         infoRoom: {
             // users that will be in info room
             // if no field, admins will be added
-            users: ['tt_test1', 'tt_test2'],
+            users: ['gv_grudinin'],
             // room alias in chat
-            name: 'INFO',
+            name: 'INFO10',
         },
     },
     // log params based on winston https://github.com/winstonjs/winston
@@ -93,7 +100,7 @@ module.exports = Object.freeze({
         // log level saved in file
         fileLevel: 'silly',
         // log level in console
-        consoleLevel: 'debug',
+        consoleLevel: 'silly',
     },
     // Optional reconnect data
     ping: {
@@ -123,9 +130,15 @@ module.exports = Object.freeze({
         // if you want to SKIP for all - just don't use this field or skip colors
         projects: ['TEST'],
     },
+    // gitArchive: {
+    //     user: 'matrix_gitlab_bot',
+    //     password: 'hole_scorn2Alicehole_scorn2Alice',
+    //     repoPrefix: 'vcs.bingo-boom.ru/matrix_archive',
+    // },
     gitArchive: {
-        user: 'string',
-        password: 'string',
-        repoPrefix: 'string',
+        user: 'git_test',
+        password: 'test_passw0rd',
+        repoPrefix: `localhost:${settings.gitServerPort}/test`,
+        protocol: 'http',
     },
 });
