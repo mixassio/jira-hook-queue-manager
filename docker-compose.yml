@@ -28,13 +28,14 @@ services:
   #     - ./set.json:/opt/arena/src/server/config/index.json
   redis_db:
     image: redis:4.0.11-alpine
-    read_only: true
     container_name: redis_db
-    # ports:
-    #   - "6379:6379"
+    ports:
+      - '6379:6379'
     volumes:
       - redis:/data
     user: redis
+    networks:
+      - mynetwork
 
 volumes:
   redis:

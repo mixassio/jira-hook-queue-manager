@@ -5,6 +5,7 @@ const { promisify } = require('util');
 const { getRedisLinkKey } = require('./lib/utils');
 
 const createClient = config => {
+  console.log('config', config);
   try {
     return redis.createClient(config);
   } catch (err) {
