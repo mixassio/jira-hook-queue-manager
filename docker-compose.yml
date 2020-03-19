@@ -15,7 +15,7 @@ services:
     depends_on:
       - redis_db
     ports:
-      - 3001:3001
+      - 54100:54100
     networks:
       - mynetwork
   # arena:
