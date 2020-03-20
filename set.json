@@ -1,10 +1,10 @@
 {
-    "queues": [
-      {
-        "name": "createRoomQueue",
-        "hostId": "demo",
-        "prefix": "bull",
-        "url": "redis://redis_db:6379/0"
-      }
-    ]
-  }
+  "queues": [
+    {
+      "name": "create-room-queue",
+      "hostId": "demo",
+      "prefix": "bull",
+      "url": "redis://redis_db:6379/0"
+    }
+  ]
+}
